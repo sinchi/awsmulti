@@ -14,13 +14,18 @@ after_success:
   - docker build -t ayoub/multi-nginx ./nginx
   - docker build -t ayoub/multi-server ./server
   - docker build -t ayoub/multi-worker ./worker
+
+  - docker tag ayoub/multi-client:client
+  - docker tag ayoub/multi-nginx:nginx
+  - docker tag ayoub/multi-server:server
+  - docker tag ayoub/multi-worker:worker
  
   # login to dockerhub to
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # push image to dockerhub
-  - docker push sinchi/sinchirep:ayoub/multi-client
-  - docker push sinchi/sinchirep:ayoub/multi-nginx
-  - docker push sinchi/sinchirep:ayoub/multi-server
-  - docker push sinchi/sinchirep:ayoub/multi-worker
+  - docker push sinchi/sinchirep:client
+  - docker push sinchi/sinchirep:nginx
+  - docker push sinchi/sinchirep:server
+  - docker push sinchi/sinchirep:worker
 
