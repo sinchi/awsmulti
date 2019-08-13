@@ -19,8 +19,8 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # push image to dockerhub
-  - docker push ayoub/multi-client
-  - docker push ayoub/multi-nginx
-  - docker push ayoub/multi-server
-  - docker push ayoub/multi-worker
+  - docker push sinchi/sinchirep:ayoub/multi-client
+  - docker push sinchi/sinchirep:ayoub/multi-nginx
+  - docker push sinchi/sinchirep:ayoub/multi-server
+  - docker push sinchi/sinchirep:ayoub/multi-worker
 
