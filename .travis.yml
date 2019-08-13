@@ -10,22 +10,17 @@ script:
   - docker run -e CI=true ayoub/multitest npm run test -- --coverage
 
 after_success:
-  - docker build -t ayoub/multi-client ./client
-  - docker build -t ayoub/multi-nginx ./nginx
-  - docker build -t ayoub/multi-server ./server
-  - docker build -t ayoub/multi-worker ./worker
+  - docker build -t sinchi/multi-client ./client
+  - docker build -t sinchi/multi-nginx ./nginx
+  - docker build -t sinchi/multi-server ./server
+  - docker build -t sinchi/multi-worker ./worker
  
   # login to dockerhub to
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker tag ayoub/multi-client:client sinchi/sinchirep:client
-  - docker tag ayoub/multi-nginx:nginx sinchi/sinchirep:nginx
-  - docker tag ayoub/multi-server:server sinchi/sinchirep:server
-  - docker tag ayoub/multi-worker:worker sinchi/sinchirep:worker
-
   # push image to dockerhub
-  - docker push sinchi/sinchirep:client
-  - docker push sinchi/sinchirep:nginx
-  - docker push sinchi/sinchirep:server
-  - docker push sinchi/sinchirep:worker
+  - docker push sinchi/multi-client
+  - docker push sinchi/multi-nginx
+  - docker push sinchi/multi-server
+  - docker push sinchi/multi-worker
 
